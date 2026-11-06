@@ -1,0 +1,869 @@
+diff -ru orig/smali/android/support/v4/view/ViewCompat$ViewCompatBaseImpl.smali v8/smali/android/support/v4/view/ViewCompat$ViewCompatBaseImpl.smali
+--- orig/smali/android/support/v4/view/ViewCompat$ViewCompatBaseImpl.smali	2026-11-06 12:03:09.197937900 +0100
++++ v8/smali/android/support/v4/view/ViewCompat$ViewCompatBaseImpl.smali	2026-11-06 12:03:14.245259300 +0100
+@@ -15,7 +15,7 @@
+ 
+ 
+ # static fields
+-.field static sAccessibilityDelegateCheckFailed:Z = false
++.field static sAccessibilityDelegateCheckFailed:Z
+ 
+ .field static sAccessibilityDelegateField:Ljava/lang/reflect/Field;
+ 
+diff -ru orig/smali/android/support/v4/view/ViewPager.smali v8/smali/android/support/v4/view/ViewPager.smali
+--- orig/smali/android/support/v4/view/ViewPager.smali	2026-11-06 12:03:09.277284700 +0100
++++ v8/smali/android/support/v4/view/ViewPager.smali	2026-11-06 12:03:14.342717100 +0100
+@@ -64,7 +64,7 @@
+ 
+ .field private static final TAG:Ljava/lang/String; = "ViewPager"
+ 
+-.field private static final USE_CACHE:Z = false
++.field private static final USE_CACHE:Z
+ 
+ .field private static final sInterpolator:Landroid/view/animation/Interpolator;
+ 
+diff -ru orig/smali/com/android/fmradio/FMAreaAdapter.smali v8/smali/com/android/fmradio/FMAreaAdapter.smali
+--- orig/smali/com/android/fmradio/FMAreaAdapter.smali	2026-11-06 12:03:10.026215700 +0100
++++ v8/smali/com/android/fmradio/FMAreaAdapter.smali	2026-11-06 12:03:15.188769000 +0100
+@@ -193,7 +193,7 @@
+     .line 58
+     invoke-virtual {v2, v1}, Landroid/widget/ImageView;->setVisibility(I)V
+ 
+-    const-string p1, "#EF4B24"
++    const-string p1, "#C8CCD0"
+ 
+     .line 59
+     invoke-static {p1}, Landroid/graphics/Color;->parseColor(Ljava/lang/String;)I
+diff -ru orig/smali/com/android/fmradio/FmMainActivity$4.smali v8/smali/com/android/fmradio/FmMainActivity$4.smali
+--- orig/smali/com/android/fmradio/FmMainActivity$4.smali	2026-11-06 12:03:10.159294600 +0100
++++ v8/smali/com/android/fmradio/FmMainActivity$4.smali	2026-11-06 12:03:15.363850700 +0100
+@@ -236,12 +236,17 @@
+ 
+     move-result-object p1
+ 
++    if-nez p1, :cond_5
++
++    const-string p1, ""
++
+     .line 1203
++    :cond_5
+     invoke-virtual {p1, v2}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+ 
+     move-result v0
+ 
+-    if-nez v0, :cond_5
++    if-nez v0, :cond_6
+ 
+     .line 1204
+     iget-object v0, p0, Lcom/android/fmradio/FmMainActivity$4;->this$0:Lcom/android/fmradio/FmMainActivity;
+@@ -280,14 +285,14 @@
+     invoke-virtual {v0, p1}, Landroid/widget/TextView;->setText(Ljava/lang/CharSequence;)V
+ 
+     .line 1210
+-    :cond_5
++    :cond_6
+     iget-object p1, p0, Lcom/android/fmradio/FmMainActivity$4;->this$0:Lcom/android/fmradio/FmMainActivity;
+ 
+     invoke-static {p1}, Lcom/android/fmradio/FmMainActivity;->access$1400(Lcom/android/fmradio/FmMainActivity;)Lcom/android/fmradio/views/FmScroller;
+ 
+     move-result-object p1
+ 
+-    if-eqz p1, :cond_6
++    if-eqz p1, :cond_7
+ 
+     .line 1211
+     iget-object p1, p0, Lcom/android/fmradio/FmMainActivity$4;->this$0:Lcom/android/fmradio/FmMainActivity;
+@@ -299,7 +304,7 @@
+     invoke-virtual {p1}, Lcom/android/fmradio/views/FmScroller;->updateHeaderTextAndButton()V
+ 
+     .line 1214
+-    :cond_6
++    :cond_7
+     iget-object p1, p0, Lcom/android/fmradio/FmMainActivity$4;->this$0:Lcom/android/fmradio/FmMainActivity;
+ 
+     iput-boolean v8, p1, Lcom/android/fmradio/FmMainActivity;->isScan:Z
+@@ -324,12 +329,17 @@
+ 
+     move-result-object p1
+ 
++    if-nez p1, :cond_8
++
++    const-string p1, ""
++
+     .line 1182
++    :cond_8
+     invoke-virtual {p1, v2}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+ 
+     move-result v0
+ 
+-    if-nez v0, :cond_7
++    if-nez v0, :cond_9
+ 
+     .line 1183
+     iget-object v0, p0, Lcom/android/fmradio/FmMainActivity$4;->this$0:Lcom/android/fmradio/FmMainActivity;
+@@ -391,14 +401,14 @@
+     invoke-virtual {p1, v6}, Landroid/widget/LinearLayout;->setVisibility(I)V
+ 
+     .line 1190
+-    :cond_7
++    :cond_9
+     iget-object p1, p0, Lcom/android/fmradio/FmMainActivity$4;->this$0:Lcom/android/fmradio/FmMainActivity;
+ 
+     invoke-static {p1}, Lcom/android/fmradio/FmMainActivity;->access$1400(Lcom/android/fmradio/FmMainActivity;)Lcom/android/fmradio/views/FmScroller;
+ 
+     move-result-object p1
+ 
+-    if-eqz p1, :cond_8
++    if-eqz p1, :cond_a
+ 
+     .line 1191
+     iget-object p1, p0, Lcom/android/fmradio/FmMainActivity$4;->this$0:Lcom/android/fmradio/FmMainActivity;
+@@ -419,7 +429,7 @@
+     invoke-virtual {p1}, Lcom/android/fmradio/views/FmScroller;->updateHeaderTextAndButton()V
+ 
+     .line 1196
+-    :cond_8
++    :cond_a
+     iget-object p1, p0, Lcom/android/fmradio/FmMainActivity$4;->this$0:Lcom/android/fmradio/FmMainActivity;
+ 
+     iput-boolean v8, p1, Lcom/android/fmradio/FmMainActivity;->isScan:Z
+@@ -491,14 +501,14 @@
+ 
+     move-result v2
+ 
+-    if-ne v2, v7, :cond_9
++    if-ne v2, v7, :cond_b
+ 
+     .line 1246
+     iget-object v2, p0, Lcom/android/fmradio/FmMainActivity$4;->this$0:Lcom/android/fmradio/FmMainActivity;
+ 
+     iget-object v2, v2, Lcom/android/fmradio/FmMainActivity;->mStText:Landroid/widget/TextView;
+ 
+-    const-string v3, "#FF0000"
++    const-string v3, "#C8CCD0"
+ 
+     invoke-static {v3}, Landroid/graphics/Color;->parseColor(Ljava/lang/String;)I
+ 
+@@ -534,7 +544,7 @@
+     goto/16 :goto_6
+ 
+     .line 1249
+-    :cond_9
++    :cond_b
+     iget-object v2, p0, Lcom/android/fmradio/FmMainActivity$4;->this$0:Lcom/android/fmradio/FmMainActivity;
+ 
+     iget-object v2, v2, Lcom/android/fmradio/FmMainActivity;->mStText:Landroid/widget/TextView;
+@@ -628,9 +638,9 @@
+ 
+     move-result-object v0
+ 
+-    if-eqz v0, :cond_23
++    if-eqz v0, :cond_25
+ 
+-    if-lez p1, :cond_23
++    if-lez p1, :cond_25
+ 
+     .line 1175
+     iget-object v0, p0, Lcom/android/fmradio/FmMainActivity$4;->this$0:Lcom/android/fmradio/FmMainActivity;
+@@ -705,7 +715,7 @@
+ 
+     const/16 v0, 0x2a26
+ 
+-    if-ne p1, v0, :cond_a
++    if-ne p1, v0, :cond_c
+ 
+     .line 1155
+     iget-object v0, p0, Lcom/android/fmradio/FmMainActivity$4;->this$0:Lcom/android/fmradio/FmMainActivity;
+@@ -718,7 +728,7 @@
+     iput p1, v0, Lcom/android/fmradio/FmMainActivity;->PTYcurrentStations1:I
+ 
+     .line 1158
+-    :cond_a
++    :cond_c
+     iget-object v0, p0, Lcom/android/fmradio/FmMainActivity$4;->this$0:Lcom/android/fmradio/FmMainActivity;
+ 
+     iput p1, v0, Lcom/android/fmradio/FmMainActivity;->currentStations:I
+@@ -829,13 +839,13 @@
+ 
+     sget v4, Lcom/android/fmradio/FmService;->POWER_UP:I
+ 
+-    if-ne v2, v4, :cond_b
++    if-ne v2, v4, :cond_d
+ 
+     move v2, v7
+ 
+     goto :goto_0
+ 
+-    :cond_b
++    :cond_d
+     move v2, v8
+ 
+     .line 1091
+@@ -881,7 +891,7 @@
+ 
+     invoke-static {p1, v7}, Lcom/android/fmradio/FmMainActivity;->access$3300(Lcom/android/fmradio/FmMainActivity;Z)V
+ 
+-    if-nez v0, :cond_c
++    if-nez v0, :cond_e
+ 
+     .line 1101
+     new-instance p1, Ljava/lang/StringBuilder;
+@@ -932,7 +942,7 @@
+     return-void
+ 
+     .line 1109
+-    :cond_c
++    :cond_e
+     iget-object p1, p0, Lcom/android/fmradio/FmMainActivity$4;->this$0:Lcom/android/fmradio/FmMainActivity;
+ 
+     invoke-static {p1, v7}, Lcom/android/fmradio/FmMainActivity;->access$3900(Lcom/android/fmradio/FmMainActivity;Z)V
+@@ -1050,7 +1060,7 @@
+ 
+     move-result v0
+ 
+-    if-ne p1, v7, :cond_d
++    if-ne p1, v7, :cond_f
+ 
+     .line 1126
+     iget-object p1, p0, Lcom/android/fmradio/FmMainActivity$4;->this$0:Lcom/android/fmradio/FmMainActivity;
+@@ -1059,8 +1069,8 @@
+ 
+     goto/16 :goto_6
+ 
+-    :cond_d
+-    if-ne v0, v7, :cond_23
++    :cond_f
++    if-ne v0, v7, :cond_25
+ 
+     .line 1128
+     iget-object p1, p0, Lcom/android/fmradio/FmMainActivity$4;->this$0:Lcom/android/fmradio/FmMainActivity;
+@@ -1098,7 +1108,7 @@
+ 
+     move-result v0
+ 
+-    if-nez p1, :cond_f
++    if-nez p1, :cond_11
+ 
+     .line 919
+     iget-object v2, p0, Lcom/android/fmradio/FmMainActivity$4;->this$0:Lcom/android/fmradio/FmMainActivity;
+@@ -1107,7 +1117,7 @@
+ 
+     move-result v2
+ 
+-    if-eqz v2, :cond_f
++    if-eqz v2, :cond_11
+ 
+     .line 920
+     iget-object v2, p0, Lcom/android/fmradio/FmMainActivity$4;->this$0:Lcom/android/fmradio/FmMainActivity;
+@@ -1120,12 +1130,12 @@
+ 
+     move-result v2
+ 
+-    if-lez v2, :cond_f
++    if-lez v2, :cond_11
+ 
+     .line 922
+     sget v2, Lcom/android/fmradio/FmUtils;->STATION_FM:I
+ 
+-    if-ne v0, v2, :cond_e
++    if-ne v0, v2, :cond_10
+ 
+     .line 923
+     iget-object v2, p0, Lcom/android/fmradio/FmMainActivity$4;->this$0:Lcom/android/fmradio/FmMainActivity;
+@@ -1153,7 +1163,7 @@
+     goto :goto_1
+ 
+     .line 925
+-    :cond_e
++    :cond_10
+     iget-object v2, p0, Lcom/android/fmradio/FmMainActivity$4;->this$0:Lcom/android/fmradio/FmMainActivity;
+ 
+     iget-object v2, v2, Lcom/android/fmradio/FmMainActivity;->mAmRadioService:Lcom/radio/service/RadioService;
+@@ -1177,13 +1187,13 @@
+     invoke-virtual {v2, v3}, Lcom/radio/service/RadioService;->setFrequency(I)V
+ 
+     .line 937
+-    :cond_f
++    :cond_11
+     :goto_1
+     iget-object v2, p0, Lcom/android/fmradio/FmMainActivity$4;->this$0:Lcom/android/fmradio/FmMainActivity;
+ 
+     invoke-static {v2, v7}, Lcom/android/fmradio/FmMainActivity;->access$3100(Lcom/android/fmradio/FmMainActivity;Z)V
+ 
+-    if-nez p1, :cond_12
++    if-nez p1, :cond_14
+ 
+     .line 940
+     iget-object v2, p0, Lcom/android/fmradio/FmMainActivity$4;->this$0:Lcom/android/fmradio/FmMainActivity;
+@@ -1192,12 +1202,12 @@
+ 
+     move-result v2
+ 
+-    if-nez v2, :cond_12
++    if-nez v2, :cond_14
+ 
+     .line 942
+     sget p1, Lcom/android/fmradio/FmUtils;->STATION_FM:I
+ 
+-    if-eq v0, p1, :cond_10
++    if-eq v0, p1, :cond_12
+ 
+     iget-object p1, p0, Lcom/android/fmradio/FmMainActivity$4;->this$0:Lcom/android/fmradio/FmMainActivity;
+ 
+@@ -1205,10 +1215,10 @@
+ 
+     move-result p1
+ 
+-    if-nez p1, :cond_11
++    if-nez p1, :cond_13
+ 
+     .line 943
+-    :cond_10
++    :cond_12
+     iget-object p1, p0, Lcom/android/fmradio/FmMainActivity$4;->this$0:Lcom/android/fmradio/FmMainActivity;
+ 
+     invoke-static {p1}, Lcom/android/fmradio/FmMainActivity;->access$900(Lcom/android/fmradio/FmMainActivity;)Landroid/content/Context;
+@@ -1231,7 +1241,7 @@
+     invoke-virtual {p1}, Landroid/widget/Toast;->show()V
+ 
+     .line 959
+-    :cond_11
++    :cond_13
+     iget-object p1, p0, Lcom/android/fmradio/FmMainActivity$4;->this$0:Lcom/android/fmradio/FmMainActivity;
+ 
+     invoke-static {p1}, Lcom/android/fmradio/FmMainActivity;->access$500(Lcom/android/fmradio/FmMainActivity;)I
+@@ -1257,14 +1267,14 @@
+     return-void
+ 
+     .line 964
+-    :cond_12
++    :cond_14
+     iget-object v2, p0, Lcom/android/fmradio/FmMainActivity$4;->this$0:Lcom/android/fmradio/FmMainActivity;
+ 
+     invoke-static {v2}, Lcom/android/fmradio/FmMainActivity;->access$1400(Lcom/android/fmradio/FmMainActivity;)Lcom/android/fmradio/views/FmScroller;
+ 
+     move-result-object v2
+ 
+-    if-eqz v2, :cond_13
++    if-eqz v2, :cond_15
+ 
+     const-string v2, "onScanAddFavorite"
+ 
+@@ -1290,12 +1300,12 @@
+     invoke-virtual {v2}, Lcom/android/fmradio/views/FmScroller;->notifyAdatperChange()V
+ 
+     .line 971
+-    :cond_13
++    :cond_15
+     sget v2, Lcom/android/fmradio/FmUtils;->STATION_FM:I
+ 
+     const-string v3, "xy_mcurrentstation="
+ 
+-    if-ne v0, v2, :cond_14
++    if-ne v0, v2, :cond_16
+ 
+     .line 972
+     new-instance v2, Ljava/lang/StringBuilder;
+@@ -1338,7 +1348,7 @@
+     goto :goto_2
+ 
+     .line 975
+-    :cond_14
++    :cond_16
+     new-instance v2, Ljava/lang/StringBuilder;
+ 
+     invoke-direct {v2}, Ljava/lang/StringBuilder;-><init>()V
+@@ -1383,7 +1393,7 @@
+ 
+     move-result-object v1
+ 
+-    if-eqz v1, :cond_15
++    if-eqz v1, :cond_17
+ 
+     iget-object v1, p0, Lcom/android/fmradio/FmMainActivity$4;->this$0:Lcom/android/fmradio/FmMainActivity;
+ 
+@@ -1400,7 +1410,7 @@
+     invoke-interface {v1, v2}, Lcom/android/fmradio/views/FmScroller$EventListener;->onPlay(I)V
+ 
+     .line 980
+-    :cond_15
++    :cond_17
+     :goto_2
+     iget-object v1, p0, Lcom/android/fmradio/FmMainActivity$4;->this$0:Lcom/android/fmradio/FmMainActivity;
+ 
+@@ -1424,7 +1434,7 @@
+ 
+     invoke-static {v1, v7}, Lcom/android/fmradio/FmMainActivity;->access$3300(Lcom/android/fmradio/FmMainActivity;Z)V
+ 
+-    if-nez p1, :cond_16
++    if-nez p1, :cond_18
+ 
+     .line 986
+     iget-object p1, p0, Lcom/android/fmradio/FmMainActivity$4;->this$0:Lcom/android/fmradio/FmMainActivity;
+@@ -1434,7 +1444,7 @@
+     move-result p1
+ 
+     .line 987
+-    :cond_16
++    :cond_18
+     iget-object v1, p0, Lcom/android/fmradio/FmMainActivity$4;->this$0:Lcom/android/fmradio/FmMainActivity;
+ 
+     invoke-static {v1}, Lcom/android/fmradio/FmMainActivity;->access$3500(Lcom/android/fmradio/FmMainActivity;)V
+@@ -1442,7 +1452,7 @@
+     .line 988
+     sget v1, Lcom/android/fmradio/FmUtils;->STATION_FM:I
+ 
+-    if-eq v0, v1, :cond_17
++    if-eq v0, v1, :cond_19
+ 
+     iget-object v0, p0, Lcom/android/fmradio/FmMainActivity$4;->this$0:Lcom/android/fmradio/FmMainActivity;
+ 
+@@ -1450,10 +1460,10 @@
+ 
+     move-result v0
+ 
+-    if-nez v0, :cond_18
++    if-nez v0, :cond_1a
+ 
+     .line 989
+-    :cond_17
++    :cond_19
+     new-instance v0, Ljava/lang/StringBuilder;
+ 
+     invoke-direct {v0}, Ljava/lang/StringBuilder;-><init>()V
+@@ -1503,7 +1513,7 @@
+     invoke-virtual {p1}, Landroid/widget/Toast;->show()V
+ 
+     .line 993
+-    :cond_18
++    :cond_1a
+     iget-object p1, p0, Lcom/android/fmradio/FmMainActivity$4;->this$0:Lcom/android/fmradio/FmMainActivity;
+ 
+     invoke-static {p1}, Lcom/android/fmradio/FmMainActivity;->access$3600(Lcom/android/fmradio/FmMainActivity;)Landroid/widget/TextView;
+@@ -1579,7 +1589,7 @@
+ 
+     iget-object p1, p1, Lcom/android/fmradio/FmMainActivity;->mService:Lcom/android/fmradio/FmService;
+ 
+-    if-eqz p1, :cond_19
++    if-eqz p1, :cond_1b
+ 
+     .line 1076
+     iget-object p1, p0, Lcom/android/fmradio/FmMainActivity$4;->this$0:Lcom/android/fmradio/FmMainActivity;
+@@ -1589,7 +1599,7 @@
+     invoke-virtual {p1}, Lcom/android/fmradio/FmService;->removeNotification()V
+ 
+     .line 1078
+-    :cond_19
++    :cond_1b
+     iget-object p1, p0, Lcom/android/fmradio/FmMainActivity$4;->this$0:Lcom/android/fmradio/FmMainActivity;
+ 
+     invoke-static {p1}, Lcom/android/fmradio/FmMainActivity;->access$3600(Lcom/android/fmradio/FmMainActivity;)Landroid/widget/TextView;
+@@ -1637,7 +1647,7 @@
+ 
+     move-result v1
+ 
+-    if-ne v0, v1, :cond_23
++    if-ne v0, v1, :cond_25
+ 
+     .line 1003
+     iget-object v0, p0, Lcom/android/fmradio/FmMainActivity$4;->this$0:Lcom/android/fmradio/FmMainActivity;
+@@ -1650,13 +1660,13 @@
+ 
+     sget v1, Lcom/android/fmradio/FmService;->POWER_UP:I
+ 
+-    if-ne v0, v1, :cond_1a
++    if-ne v0, v1, :cond_1c
+ 
+     move v0, v7
+ 
+     goto :goto_3
+ 
+-    :cond_1a
++    :cond_1c
+     move v0, v8
+ 
+     .line 1004
+@@ -1675,7 +1685,7 @@
+ 
+     invoke-virtual {v1, p1}, Lcom/android/fmradio/FmMainActivity;->refreshStationUI(I)V
+ 
+-    if-eqz v0, :cond_1b
++    if-eqz v0, :cond_1d
+ 
+     .line 1008
+     iget-object p1, p0, Lcom/android/fmradio/FmMainActivity$4;->this$0:Lcom/android/fmradio/FmMainActivity;
+@@ -1695,7 +1705,7 @@
+     goto :goto_4
+ 
+     .line 1012
+-    :cond_1b
++    :cond_1d
+     iget-object p1, p0, Lcom/android/fmradio/FmMainActivity$4;->this$0:Lcom/android/fmradio/FmMainActivity;
+ 
+     const v0, 0x7f0c004a
+@@ -1712,7 +1722,7 @@
+ 
+     iget-object p1, p1, Lcom/android/fmradio/FmMainActivity;->mService:Lcom/android/fmradio/FmService;
+ 
+-    if-eqz p1, :cond_1c
++    if-eqz p1, :cond_1e
+ 
+     iget-object p1, p0, Lcom/android/fmradio/FmMainActivity$4;->this$0:Lcom/android/fmradio/FmMainActivity;
+ 
+@@ -1724,7 +1734,7 @@
+ 
+     sget v0, Lcom/android/fmradio/FmService;->POWER_DOWN:I
+ 
+-    if-ne p1, v0, :cond_1c
++    if-ne p1, v0, :cond_1e
+ 
+     .line 1017
+     iget-object p1, p0, Lcom/android/fmradio/FmMainActivity$4;->this$0:Lcom/android/fmradio/FmMainActivity;
+@@ -1732,7 +1742,7 @@
+     invoke-virtual {p1}, Lcom/android/fmradio/FmMainActivity;->powerUpFm()V
+ 
+     .line 1020
+-    :cond_1c
++    :cond_1e
+     iget-object p1, p0, Lcom/android/fmradio/FmMainActivity$4;->this$0:Lcom/android/fmradio/FmMainActivity;
+ 
+     invoke-static {p1, v7}, Lcom/android/fmradio/FmMainActivity;->access$3300(Lcom/android/fmradio/FmMainActivity;Z)V
+@@ -1749,7 +1759,7 @@
+ 
+     move-result p1
+ 
+-    if-nez p1, :cond_1d
++    if-nez p1, :cond_1f
+ 
+     .line 1024
+     iget-object p1, p0, Lcom/android/fmradio/FmMainActivity$4;->this$0:Lcom/android/fmradio/FmMainActivity;
+@@ -1771,7 +1781,7 @@
+     invoke-static {p1, v0, v1, v2, v3}, Lcom/android/fmradio/FmMainActivity;->access$700(Lcom/android/fmradio/FmMainActivity;IIII)V
+ 
+     .line 1025
+-    :cond_1d
++    :cond_1f
+     iget-object p1, p0, Lcom/android/fmradio/FmMainActivity$4;->this$0:Lcom/android/fmradio/FmMainActivity;
+ 
+     iput-boolean v8, p1, Lcom/android/fmradio/FmMainActivity;->isScan:Z
+@@ -1818,7 +1828,7 @@
+ 
+     move-result p1
+ 
+-    if-eqz p1, :cond_1f
++    if-eqz p1, :cond_21
+ 
+     .line 1036
+     iget-object p1, p0, Lcom/android/fmradio/FmMainActivity$4;->this$0:Lcom/android/fmradio/FmMainActivity;
+@@ -1827,7 +1837,7 @@
+ 
+     move-result p1
+ 
+-    if-eqz p1, :cond_1f
++    if-eqz p1, :cond_21
+ 
+     .line 1037
+     iget-object p1, p0, Lcom/android/fmradio/FmMainActivity$4;->this$0:Lcom/android/fmradio/FmMainActivity;
+@@ -1836,7 +1846,7 @@
+ 
+     move-result p1
+ 
+-    if-eqz p1, :cond_1e
++    if-eqz p1, :cond_20
+ 
+     .line 1038
+     iget-object p1, p0, Lcom/android/fmradio/FmMainActivity$4;->this$0:Lcom/android/fmradio/FmMainActivity;
+@@ -1856,7 +1866,7 @@
+     goto :goto_5
+ 
+     .line 1042
+-    :cond_1e
++    :cond_20
+     iget-object p1, p0, Lcom/android/fmradio/FmMainActivity$4;->this$0:Lcom/android/fmradio/FmMainActivity;
+ 
+     invoke-static {p1}, Lcom/android/fmradio/FmMainActivity;->access$4800(Lcom/android/fmradio/FmMainActivity;)V
+@@ -1864,14 +1874,14 @@
+     goto :goto_5
+ 
+     .line 1045
+-    :cond_1f
++    :cond_21
+     iget-object p1, p0, Lcom/android/fmradio/FmMainActivity$4;->this$0:Lcom/android/fmradio/FmMainActivity;
+ 
+     invoke-static {p1}, Lcom/android/fmradio/FmMainActivity;->access$4900(Lcom/android/fmradio/FmMainActivity;)Landroid/view/MenuItem;
+ 
+     move-result-object p1
+ 
+-    if-eqz p1, :cond_20
++    if-eqz p1, :cond_22
+ 
+     .line 1046
+     iget-object p1, p0, Lcom/android/fmradio/FmMainActivity$4;->this$0:Lcom/android/fmradio/FmMainActivity;
+@@ -1892,14 +1902,14 @@
+     invoke-interface {p1, v4}, Landroid/view/MenuItem;->setTitle(I)Landroid/view/MenuItem;
+ 
+     .line 1049
+-    :cond_20
++    :cond_22
+     iget-object p1, p0, Lcom/android/fmradio/FmMainActivity$4;->this$0:Lcom/android/fmradio/FmMainActivity;
+ 
+     invoke-static {p1}, Lcom/android/fmradio/FmMainActivity;->access$4400(Lcom/android/fmradio/FmMainActivity;)Z
+ 
+     move-result p1
+ 
+-    if-eqz p1, :cond_21
++    if-eqz p1, :cond_23
+ 
+     .line 1050
+     iget-object p1, p0, Lcom/android/fmradio/FmMainActivity$4;->this$0:Lcom/android/fmradio/FmMainActivity;
+@@ -1913,7 +1923,7 @@
+ 
+     move-result p1
+ 
+-    if-nez p1, :cond_22
++    if-nez p1, :cond_24
+ 
+     .line 1053
+     iget-object p1, p0, Lcom/android/fmradio/FmMainActivity$4;->this$0:Lcom/android/fmradio/FmMainActivity;
+@@ -1923,7 +1933,7 @@
+     goto :goto_5
+ 
+     .line 1057
+-    :cond_21
++    :cond_23
+     iget-object p1, p0, Lcom/android/fmradio/FmMainActivity$4;->this$0:Lcom/android/fmradio/FmMainActivity;
+ 
+     invoke-static {p1}, Lcom/android/fmradio/FmMainActivity;->access$4500(Lcom/android/fmradio/FmMainActivity;)V
+@@ -1934,7 +1944,7 @@
+     invoke-static {p1}, Lcom/android/fmradio/FmMainActivity;->access$5100(Lcom/android/fmradio/FmMainActivity;)V
+ 
+     .line 1062
+-    :cond_22
++    :cond_24
+     :goto_5
+     iget-object p1, p0, Lcom/android/fmradio/FmMainActivity$4;->this$0:Lcom/android/fmradio/FmMainActivity;
+ 
+@@ -1962,7 +1972,7 @@
+ 
+     invoke-virtual {p1, v6}, Landroid/widget/TextView;->setVisibility(I)V
+ 
+-    :cond_23
++    :cond_25
+     :goto_6
+     return-void
+ 
+diff -ru orig/smali/com/android/fmradio/FmMainActivity.smali v8/smali/com/android/fmradio/FmMainActivity.smali
+--- orig/smali/com/android/fmradio/FmMainActivity.smali	2026-11-06 12:03:10.206855400 +0100
++++ v8/smali/com/android/fmradio/FmMainActivity.smali	2026-11-06 12:03:15.413220100 +0100
+@@ -6522,6 +6522,40 @@
+ 
+     .line 1832
+     :goto_0
++    iget-object v0, p0, Lcom/android/fmradio/FmMainActivity;->mService:Lcom/android/fmradio/FmService;
++
++    if-eqz v0, :cond_2
++
++    invoke-virtual {v0}, Lcom/android/fmradio/FmService;->getPs()Ljava/lang/String;
++
++    move-result-object v2
++
++    invoke-static {v2}, Landroid/text/TextUtils;->isEmpty(Ljava/lang/CharSequence;)Z
++
++    move-result v3
++
++    if-nez v3, :cond_1
++
++    const-string v3, "ps"
++
++    invoke-virtual {v1, v3, v2}, Landroid/content/Intent;->putExtra(Ljava/lang/String;Ljava/lang/String;)Landroid/content/Intent;
++
++    :cond_1
++    invoke-virtual {v0}, Lcom/android/fmradio/FmService;->getRtText()Ljava/lang/String;
++
++    move-result-object v2
++
++    invoke-static {v2}, Landroid/text/TextUtils;->isEmpty(Ljava/lang/CharSequence;)Z
++
++    move-result v3
++
++    if-nez v3, :cond_2
++
++    const-string v3, "rt"
++
++    invoke-virtual {v1, v3, v2}, Landroid/content/Intent;->putExtra(Ljava/lang/String;Ljava/lang/String;)Landroid/content/Intent;
++
++    :cond_2
+     iget-object p1, p0, Lcom/android/fmradio/FmMainActivity;->mContext:Landroid/content/Context;
+ 
+     invoke-virtual {p1, v1}, Landroid/content/Context;->sendBroadcast(Landroid/content/Intent;)V
+@@ -7888,7 +7922,7 @@
+     .line 3262
+     iget-object p1, p0, Lcom/android/fmradio/FmMainActivity;->mStText:Landroid/widget/TextView;
+ 
+-    const-string p2, "#FF0000"
++    const-string p2, "#C8CCD0"
+ 
+     invoke-static {p2}, Landroid/graphics/Color;->parseColor(Ljava/lang/String;)I
+ 
+diff -ru orig/smali/com/android/fmradio/FmService.smali v8/smali/com/android/fmradio/FmService.smali
+--- orig/smali/com/android/fmradio/FmService.smali	2026-11-06 12:03:10.306157600 +0100
++++ v8/smali/com/android/fmradio/FmService.smali	2026-11-06 12:03:15.541641400 +0100
+@@ -4347,6 +4347,8 @@
+         }
+     .end annotation
+ 
++    invoke-static {p0}, Lcom/android/fmradio/XyMediaSession;->refresh(Lcom/android/fmradio/FmService;)V
++
+     .line 2944
+     iget-object v0, p0, Lcom/android/fmradio/FmService;->mRecords:Ljava/util/ArrayList;
+ 
+@@ -5784,6 +5786,8 @@
+     .line 2175
+     invoke-direct {p0, p1}, Lcom/android/fmradio/FmService;->notifyActivityStateChanged(Landroid/os/Bundle;)V
+ 
++    invoke-direct {p0}, Lcom/android/fmradio/FmService;->xyBroadcastRds()V
++
+     :cond_0
+     return-void
+ .end method
+@@ -5835,6 +5839,8 @@
+     .line 2160
+     invoke-direct {p0, p1}, Lcom/android/fmradio/FmService;->notifyActivityStateChanged(Landroid/os/Bundle;)V
+ 
++    invoke-direct {p0}, Lcom/android/fmradio/FmService;->xyBroadcastRds()V
++
+     :cond_0
+     return-void
+ .end method
+@@ -8356,6 +8362,66 @@
+     return-object v1
+ .end method
+ 
++.method private xyBroadcastRds()V
++    .locals 3
++
++    :try_start_0
++    new-instance v0, Landroid/content/Intent;
++
++    const-string v1, "xy.radio.rds"
++
++    invoke-direct {v0, v1}, Landroid/content/Intent;-><init>(Ljava/lang/String;)V
++
++    const-string v1, "freq"
++
++    iget v2, p0, Lcom/android/fmradio/FmService;->mCurrentStation:I
++
++    invoke-virtual {v0, v1, v2}, Landroid/content/Intent;->putExtra(Ljava/lang/String;I)Landroid/content/Intent;
++
++    const-string v1, "ps"
++
++    iget-object v2, p0, Lcom/android/fmradio/FmService;->mPsString:Ljava/lang/String;
++
++    invoke-virtual {v0, v1, v2}, Landroid/content/Intent;->putExtra(Ljava/lang/String;Ljava/lang/String;)Landroid/content/Intent;
++
++    const-string v1, "rt"
++
++    iget-object v2, p0, Lcom/android/fmradio/FmService;->mRtTextString:Ljava/lang/String;
++
++    invoke-virtual {v0, v1, v2}, Landroid/content/Intent;->putExtra(Ljava/lang/String;Ljava/lang/String;)Landroid/content/Intent;
++
++    const-string v1, "pi"
++
++    invoke-static {}, Lcom/android/fmradio/XyMediaSession;->publishedPi()I
++
++    move-result v2
++
++    invoke-virtual {v0, v1, v2}, Landroid/content/Intent;->putExtra(Ljava/lang/String;I)Landroid/content/Intent;
++
++    const-string v1, "af"
++
++    invoke-static {}, Lcom/android/fmradio/XyMediaSession;->publishedAf()[I
++
++    move-result-object v2
++
++    invoke-virtual {v0, v1, v2}, Landroid/content/Intent;->putExtra(Ljava/lang/String;[I)Landroid/content/Intent;
++
++    const-string v1, "afKnown"
++
++    invoke-static {}, Lcom/android/fmradio/XyMediaSession;->publishedAfKnown()[I
++
++    move-result-object v2
++
++    invoke-virtual {v0, v1, v2}, Landroid/content/Intent;->putExtra(Ljava/lang/String;[I)Landroid/content/Intent;
++
++    invoke-virtual {p0, v0}, Lcom/android/fmradio/FmService;->sendBroadcast(Landroid/content/Intent;)V
++    :try_end_0
++    .catch Ljava/lang/Exception; {:try_start_0 .. :try_end_0} :catch_0
++
++    :catch_0
++    return-void
++.end method
++
+ 
+ # virtual methods
+ .method public NotifyFreqChanged(II)V
+@@ -9242,12 +9308,16 @@
+     .line 1481
+     invoke-direct {p0}, Lcom/android/fmradio/FmService;->createRenderThread()V
+ 
++    invoke-static {p0}, Lcom/android/fmradio/XyMediaSession;->start(Lcom/android/fmradio/FmService;)V
++
+     return-void
+ .end method
+ 
+ .method public onDestroy()V
+     .locals 3
+ 
++    invoke-static {}, Lcom/android/fmradio/XyMediaSession;->stop()V
++
+     .line 1882
+     new-instance v0, Ljava/lang/StringBuilder;
+ 
+diff -ru orig/smali/com/android/fmradio/GalaFragmentView.smali v8/smali/com/android/fmradio/GalaFragmentView.smali
+--- orig/smali/com/android/fmradio/GalaFragmentView.smali	2026-11-06 12:03:10.306157600 +0100
++++ v8/smali/com/android/fmradio/GalaFragmentView.smali	2026-11-06 12:03:15.550685900 +0100
+@@ -2219,7 +2219,7 @@
+ 
+     aget-object v1, v1, v0
+ 
+-    const-string v2, "#EF4B24"
++    const-string v2, "#C8CCD0"
+ 
+     invoke-static {v2}, Landroid/graphics/Color;->parseColor(Ljava/lang/String;)I
+ 
+diff -ru orig/smali/com/android/fmradio/views/FmScroller$FavoriteAdapter.smali v8/smali/com/android/fmradio/views/FmScroller$FavoriteAdapter.smali
+--- orig/smali/com/android/fmradio/views/FmScroller$FavoriteAdapter.smali	2026-11-06 12:03:10.448806300 +0100
++++ v8/smali/com/android/fmradio/views/FmScroller$FavoriteAdapter.smali	2026-11-06 12:03:15.753803900 +0100
+@@ -472,7 +472,7 @@
+     :goto_1
+     iget-object p1, p2, Lcom/android/fmradio/views/FmScroller$ViewHolder;->mStationFreq:Landroid/widget/TextView;
+ 
+-    const-string v0, "#0bd9f1"
++    const-string v0, "#C8CCD0"
+ 
+     invoke-static {v0}, Landroid/graphics/Color;->parseColor(Ljava/lang/String;)I
+ 
+diff -ru orig/smali/com/android/fmradio/views/FmVisualizerView.smali v8/smali/com/android/fmradio/views/FmVisualizerView.smali
+--- orig/smali/com/android/fmradio/views/FmVisualizerView.smali	2026-11-06 12:03:10.474652500 +0100
++++ v8/smali/com/android/fmradio/views/FmVisualizerView.smali	2026-11-06 12:03:15.784602800 +0100
+@@ -377,7 +377,7 @@
+     .line 88
+     iget-object v0, p0, Lcom/android/fmradio/views/FmVisualizerView;->mPaint:Landroid/graphics/Paint;
+ 
+-    const v1, -0xf4260f
++    const v1, -0x373330
+ 
+     invoke-virtual {v0, v1}, Landroid/graphics/Paint;->setColor(I)V
+ 
+diff -ru orig/smali/fr/castorflex/android/verticalviewpager/VerticalViewPager.smali v8/smali/fr/castorflex/android/verticalviewpager/VerticalViewPager.smali
+--- orig/smali/fr/castorflex/android/verticalviewpager/VerticalViewPager.smali	2026-11-06 12:03:10.565823600 +0100
++++ v8/smali/fr/castorflex/android/verticalviewpager/VerticalViewPager.smali	2026-11-06 12:03:15.911699100 +0100
+@@ -61,7 +61,7 @@
+ 
+ .field private static final TAG:Ljava/lang/String; = "ViewPager"
+ 
+-.field private static final USE_CACHE:Z = false
++.field private static final USE_CACHE:Z
+ 
+ .field private static final sInterpolator:Landroid/view/animation/Interpolator;
+ 

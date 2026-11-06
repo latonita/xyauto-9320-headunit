@@ -1,0 +1,31 @@
+{
+  "_doc": "Palette for the v3 recolour. Everything red/orange/amber/pink becomes neutral silver; edit and re-run build.py.",
+  "hue_ranges_deg": [[328, 360], [0, 52]],
+  "skip_drawables": ["ic_launcher", "radio_bg"],
+  "sat_min": 0.25,
+  "sat_full": 0.5,
+  "ramp": [[0.0, "#000000"], [0.52, "#B0B4B8"], [1.0, "#FFFFFF"]],
+  "_ramp_doc": "lightness of the original pixel -> silver. Original accent #EF4B24 (L=0.52) -> #B0B4B8; brighter parts approach white.",
+  "code_strings": {
+    "#EF4B24": "#C8CCD0",
+    "#FF0000": "#C8CCD0",
+    "#0bd9f1": "#C8CCD0"
+  },
+  "code_ints": {"0xFF0BD9F1": "0xFFC8CCD0"},
+  "xml_color_literals": "ramp",
+  "flat": {
+    "_doc": "Flat (gradient-free) replacements. ring = outline colour, fill = solid fill (RGBA), chevron keeps the original white glyph.",
+    "arrow_buttons": {
+      "drawables": ["left1_n", "right1_n", "raido_zuojiantou_n", "raido_youjiantou_n"],
+      "fill": "#1F2123", "ring": "#B0B4B8", "ring_px_per_72": 2.0
+    },
+    "arrow_buttons_pressed": {
+      "drawables": ["left1_d", "right1_d", "raido_zuojiantou_d", "raido_youjiantou_d"],
+      "fill": "#34383B", "ring": "#C8CCD0", "ring_px_per_72": 2.0
+    },
+    "selected_preset": {
+      "drawables": ["btn1_d"],
+      "fill": "#C8CCD0", "fill_alpha": 0.16, "ring": "#C8CCD0", "ring_alpha": 0.7, "ring_px": 2, "radius_px": 10
+    }
+  }
+}

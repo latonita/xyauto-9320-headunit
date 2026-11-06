@@ -1,0 +1,8 @@
+fm-radio-patch/input/
+fm-radio-patch/keys/
+fm-radio-patch/tools/
+fm-radio-patch/out/
+__pycache__/
+*.apk
+*.idsig
+*.iap
