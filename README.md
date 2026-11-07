@@ -3,9 +3,11 @@
 How I run a cheap Chinese Android head unit with a better launcher and a fixed FM radio, and what I learned
 about the unit on the way. Everything here works over ADB, without root and without flashing the ROM.
 
-**My unit:** XYAuto, ZhangXun / Hechuang **B9320B** board (PCB `B9320BH V0.1/C 64G`), sold as a 9" "Android 15,
-8-core, 4/64 GB" radio for the 2005–2010 Jeep Grand Cherokee WK. It is really an Android 8.1 unit with a 4-core
-32-bit SoC and an OpenGL ES 2.0 GPU. Full specs: [docs/01-hardware.md](docs/01-hardware.md).
+**My unit:**  XYAuto, ZhangXun / Hechuang **B9320B** board (PCB `B9320BH V0.1/C 64G`), sold as a 9" "Android 15,
+8-core, 4/64 GB" radio for the 2005–2010 Jeep Grand Cherokee WK. It is really an Android 8.1 unit with 2 GB RAM, a 4-core
+32-bit SoC and an OpenGL ES 2.0 GPU. Full specs: [docs/01-hardware.md](docs/01-hardware.md). 
+
+System info shows `B9320B_AHD_00032_V001`.
 
 If your unit's About screen says `PLATFORM ZHANGXUN-9320` (or the build is `9320_…` / `full_8227L_demo`), most of
 this should apply to it too.
